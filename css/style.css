@@ -1,116 +1,105 @@
-/*Add a full page background image for use in html tagtest*/
-
 body {
   font-size: 16px;
-  font-family: 'Exo 2', sans-serif;
-  background: transparent;
-  color: #d2d2d2;
+  font-family: 'Raleway', sans-serif;
 }
-h2 {
-  margin-top: 5px;
-  margin-bottom: 5px;
+h1 {
+  font-size: 60px;
 }
 a {
   text-decoration: underline;
 }
-a:link {
-  color: #d2d2d2;
+a:link, a:visited {
+  color: #fdfaf5;
 }
-a:visited {
-  color: #d2d2d2;
-}
-a:hover {
-  color: white;
-}
-a:active {
+a:hover, a:active {
   color: white;
 }
 
 /* Created classes*/
 
-.full-background {
-  background: url(../img/houston_background.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
 .circle-img {
   border-radius: 50%;
 }
-.icon-link {
-  color: inherit;
+a.icon-link-dark:link, a.icon-link-dark:visited {
+  color: black;
   text-decoration: none;
+}
+a.icon-link-dark:hover, a.icon-link-dark:active {
+  color: black;
+  text-decoration: none;
+}
+a.icon-link-light:link, a.icon-link-light:visited {
+  color: #fdfaf5;
+  text-decoration: none;
+}
+a.icon-link-light:hover, a.icon-link-light:active {
+  color: white;
+  text-decoration: none;
+}
+a.text-link-dark:link, a.text-link-dark:visited {
+  color: black;
+}
+a.text-link-dark:hover, a.text-link-dark:active {
+  color: black;
+}
+.dark {
+  color: #173e67;
+}
+.light {
+  color: #fdfaf5;
+}
+
+/* Created ids*/
+
+#intro-block {
+  background-image: url(https://jwaynedavidson.com/img/houston_backgroundblue.svg);
+  background-size: cover;
+  color: #fdfaf5;
+}
+#about-block {
+  background-color: #fdfaf5;
+  color: #fdfaf5;
+}
+#skills-block {
+  background-image: url(https://jwaynedavidson.com/img/houston_backgroundblue.svg);
+  background-size: cover;
+  color: black;
+}
+#portfolio-block {
+  background-color: #fdfaf5;
+  color: black;
+}
+#contact-block {
+  background-image: url(https://jwaynedavidson.com/img/houston_backgroundblue.svg);
+  background-size: cover;
+  color: black;
+}
+
+/* modified fullPage.js classes */
+
+.fp-controlArrow.fp-prev {
+  border-color: transparent #173e67;
+  transparent transparent;
+}
+.fp-controlArrow.fp-next {
+  border-color: transparent transparent transparent #173e67;
+  ;
 }
 
 /* Modified bootstrap classes */
 
-.panel {
-  background-color: rgba(20, 20, 20, 0.90);
-  border-color: black;
+.img-responsive {
+  margin: 0 auto;
+}
+.panel-dark {
+  background-color: #173e67;
+  border: none;
+}
+.panel-light {
+  background-color: #fdfaf5;
+  border: none;
 }
 .row {
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-/* Custom color Bootstrap navbar */
-
-.navbar-default {
-  margin-bottom: 30px;
-  background-color: rgba(20, 20, 20, 0.90);
-  border-color: black;
-}
-.navbar-default .navbar-brand {
-  color: #d2d2d2;
-}
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #ffffff;
-}
-.navbar-default .navbar-text {
-  color: #d2d2d2;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #d2d2d2;
-}
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #ffffff;
-}
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #ffffff;
-  background-color: #d2d2d2;
-}
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #ffffff;
-  background-color: #d2d2d2;
-}
-.navbar-default .navbar-toggle {
-  border-width: 0px;
-}
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #141414;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #d2d2d2;
-}
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-  border-color: #d2d2d2;
-}
-.navbar-default .navbar-link {
-  color: #d2d2d2;
-}
-.navbar-default .navbar-link:hover {
-  color: #ffffff;
-}
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #d2d2d2;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ffffff;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #ffffff;
-    background-color: #d2d2d2;
-  }
 }

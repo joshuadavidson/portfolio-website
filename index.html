@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html class="full-background" lang="en">
+<html lang="en">
 
 <head>
   <title>Joshua Davidson - Portfolio</title>
@@ -12,148 +12,376 @@
   <meta property="fb:app_id" content="" />
   <meta property="og:url" content="https://jwaynedavidson.com/" />
   <meta property="og:title" content="Joshua Davidson - Portfolio" />
-  <meta property="og:image" content="https://jwaynedavidson.com/img/chuck-norris/img/coverphoto.jpg" />
+  <meta property="og:image" content="https://jwaynedavidson.com/img/coverphoto.jpg" />
 
   <!-- Links -->
-  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="shortcut icon" href="./favicon.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.9/jquery.fullPage.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
-  <link href='https://fonts.googleapis.com/css?family=Exo+2:500' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <script src="./scripts/gatracking.js"></script>
 </head>
 
 
 <body>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid col-md-6 col-md-offset-3">
+  <div id="fullpage">
 
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jdavidson-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand icon-link" href="https://jwaynedavidson.com/">Josh Davidson</a>
-      </div>
 
-      <div class="collapse navbar-collapse" id="jdavidson-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a class="icon-link" href="#aboutme">About</a></li>
-          <li><a class="icon-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="icon-link" href="#contact">Contact</a></li>
-        </ul>
+
+    <!--Intro-->
+    <section class="section" id="intro-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <img src="./img/jdwhite.svg" height=150 alt="Josh Davidson">
+            <h1>JOSH DAVIDSON</h1>
+            <h2>Software Engineer</h2>
+            <a href="#about">
+              <i class="fa fa-arrow-circle-o-down fa-4x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
-  <div>
-  </div>
-  <div class="container-fluid">
+    </section>
+
+
+
     <!--About Me-->
-    <div class="row" id="aboutme">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="row panel panel-default panel-body">
-          <div class="col-xs-4 col-xs-push-8">
-            <img class="img-responsive circle-img" src="./img/coverphoto.jpg">
-            <div class="row text-center">
-              <div class="col-sm-4">
-                <a class="icon-link" href="https://github.com/joshuadavidson"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
-              </div>
-              <div class="col-sm-4">
-                <a class="icon-link" href="https://www.linkedin.com/in/jwdavidson"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
-              </div>
-              <div class="col-sm-4">
-                <a class="icon-link" href="https://www.freecodecamp.com/joshuadavidson"><i class="fa fa-fire fa-3x" aria-hidden="true"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-8 col-xs-pull-4">
-            <h2>Challenges Welcome</h2>
-            <p>I’m a chemical engineer with years of experience in <a href="https://en.wikipedia.org/wiki/Process_control">process control</a>. As with many Houstonians, I moved here for the oil and gas industry but I’ve learned that I need a challenge to
-              remain interested in my work. I have found that my passion lies in coding, so I’m switching gears to pursue software engineering.</p>
-            <p>When I’m not troubleshooting code, I’m remodeling my home or playing <a href="https://play.google.com/store/apps/details?id=com.supercell.clashroyale&hl=en">Clash Royale</a>. In work and in play, I love finding creative and elegant solutions
-              to difficult problems.</p>
-            <p>Whether you’re a fellow coder, a small start-up, or an established business I would love to hear from you. Who knows maybe we can create something great together!</p>
+    <section class="section" id="about-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 text-center dark">
+            <a href="#intro">
+              <i class="fa fa-arrow-circle-o-up fa-4x dark" aria-hidden="true"></i>
+            </a>
+            <h1>ABOUT ME</h1>
           </div>
         </div>
-      </div>
-    </div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
 
-    <!--Portfolio-->
-    <div class="row" id="portfolio">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="row panel panel-default panel-body">
-          <div class="col-sm-12 text-center">
-            <h2>Portfolio</h2>
-          </div>
-          <!--Portfolio Row 1-->
-          <div class="row">
-            <div class="col-sm-6 text-center">
-              <a class="jstooltip" href="http://jwaynedavidson.com/projects/chuck-norris/jokes.html">
-                <img class="img-responsive" src="./img/chuck-norris-thumbnail.jpg">
-              </a>
-            </div>
-
-            <div class="col-sm-6 text-center">
-              <a class="jstooltip" href="http://jwaynedavidson.com/projects/weather/weather.html">
-                <img class="img-responsive" src="./img/weather-thumbnail.jpg">
-              </a>
+            <div class="row panel panel-dark panel-default panel-body">
+              <div class="col-md-4 col-md-push-8 text-center">
+                <img class="img-responsive circle-img" src="./img/coverphoto.jpg">
+              </div>
+              <div class="col-md-8 col-md-pull-4">
+                <p class="text-justify">I’m a chemical engineer with experience in <a href="https://en.wikipedia.org/wiki/Process_control">process control</a>. As with many Houstonians, I moved here for the oil and gas industry but I’ve learned that I need a challenge to remain interested in my work. Process control has taught me that my passion lies in coding, so I’m switching gears to pursue software engineering.
+                </p>
+                <p class="text-justify">Currently I am devouring everything javascript as I tackle <a href="https://www.freecodecamp.com/" target="_blank">Free Code Camp's</a> Full Stack track. When I’m not troubleshooting code, I’m remodeling my home or playing <a href="https://play.google.com/store/apps/details?id=com.supercell.clashroyale&hl=en" target="_blank">Clash Royale</a>.</p>
+              </div>
             </div>
           </div>
-
-          <!--Portfolio Row 2-->
-          <div class="row">
-            <div class="col-sm-6 text-center">
-              More coming soon...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--Contact-->
-  <div class="row" id="contact">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="row panel panel-default panel-body">
-        <div class="col-xs-12 text-center">
-          <h2>Contact</h2>
         </div>
         <div class="row">
           <div class="col-xs-12 text-center">
-            <p>
-              <a class="icon-link" href="https://github.com/joshuadavidson">
-                <i class="fa fa-github" aria-hidden="true"></i> GitHub Profile
-              </a>
-            </p>
-            <p>
-              <a class="icon-link" href="https://www.linkedin.com/in/jwdavidson">
-                <i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn Profile
-              </a>
-            </p>
-            <p>
-              <a class="icon-link" href="https://www.freecodecamp.com/joshuadavidson">
-                <i class="fa fa-fire" aria-hidden="true"></i> Free Code Camp Profile
-              </a>
-            </p>
-            <p>
+            <a href="#skills">
+              <i class="fa fa-arrow-circle-o-down fa-4x dark" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <i class="fa fa-skype" aria-hidden="true"></i> Skype: joshuadavidson
 
-            </p>
-            <p>
-              <i class="fa fa-envelope" aria-hidden="true"></i> email: email@jwaynedavidson.com
-            </p>
+
+    <!--Skills-->
+    <section class="section" id="skills-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 text-center light">
+            <a href="#about">
+              <i class="fa fa-arrow-circle-o-up fa-4x" aria-hidden="true"></i>
+            </a>
+            <h1>SKILLS</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="row panel panel-light panel-default panel-body">
+
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <p class="text-justify">Having worked in a technical role for quite some time I have come to realize that possessing the technical skills is only half of what makes for an effective engineer. Often the "soft skills" are the ones are most lacking and can make all the difference. So rather than listing technical skills (check out the portfolio for that) I'll highlight some of the "soft skills" that I have been praised for.
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2 text-center">
+                  <i class="fa fa-suitcase fa-5x" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9 text-left">
+                  <h2>Work Ethic</h2>
+                  <p class="text-justify">For me, work ethic is primarily comprised of integrity and perseverance. I define integrity as being transparent and dependable--no guesswork, no reading between the lines. And for me, perseverance pushes me through those times when even the slightest amount of progress requires momentous effort. Work ethic is more than drudging along; it’s commitment to the process and the final product.
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2 text-center">
+                  <i class="fa fa-comments-o fa-5x" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9 text-left">
+                  <h2>Communication</h2>
+                  <p class="text-justify">I know, it may seem cliché but there is a reason that communicatoin is always listed in job postings. Communication is essential when working with someone across the globe or across the hall. I have worked with remote teams in India and Saudi Arabia across cultral barriers and time zones and have found that one of the keys to good communication is simply listening. Slowing down to fully digest what someone is saying saves everyone a ton of time.
+                  </p>
+                  <p class="text-justify">Great communciation only starts with listening. When it is time to speak up it is critical to know the audience and be able to deliver information that is tailored, concise and to the point. Taking a moment to stand in the other person's shoes can provide for a conversation that is beneficial for myself as well as the technical team member, customer or corporate stakeholder.
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2 text-center">
+                  <i class="fa fa-cogs fa-5x" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9 text-left">
+                  <h2>Curiosity</h2>
+                  <p class="text-justify">
+                  Ever since I was young I have had the desire to learn. I absolutely love learning new things and the intellectual challenge that it brings. I love the why behind how something works and find joy in the times when all the small intricacies add up the whole--the ah-ha moment. Once I've wrapped my mind around something new the fun continues as I innovate with the new and the old finding new ways to work efficiently.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <a href="#portfolio">
+              <i class="fa fa-arrow-circle-o-down fa-4x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!--Portfolio-->
+    <section class="section" id="portfolio-block">
+      <div class="container-fluid">
+
+        <div class="slide" data-anchor="chucknorris">
+
+          <div class="row">
+            <div class="col-xs-12 text-center dark">
+              <a href="#skills">
+                <i class="fa fa-arrow-circle-o-up fa-4x dark" aria-hidden="true"></i>
+              </a>
+              <h1>PORTFOLIO</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 text-center">
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <a class="jstooltip" href="http://jwaynedavidson.com/projects/chuck-norris/jokes.html" target="_blank">
+                    <img class="img-responsive" src="./img/chuck-norris-thumbnail.jpg">
+                  </a>
+                </div>
+                <div class="col-md-6 text-left">
+                  <h2>Chuck Norris Joke Generator</h2>
+                  <a class="text-link-dark" href="https://github.com/joshuadavidson/chuck-norris-jokes-project" target="_blank">See the Code Here</a>
+                  <h3>Elements</h3>
+                  <ul>
+                    <li>Responsive Bootstrap HTML/CSS</li>
+                    <li>Clean design</li>
+                    <li>Use of <a class="text-link-dark" href="http://icndb.com" target="_blank">icndb.com</a> API</li>
+                  </ul>
+                  <h3>Description</h3>
+                  <p class="text-justify">The Chuck Norris Joke Generator displays random Chuck Norris jokes from The Internet Chuck Norris Joke Database (<a class="text-link-dark" href="http://icndb.com" target="_blank">icndb.com</a>). Random jokes are retrieved from the database via an API call and users have the ability to tweet, post or pin the site via social media icons.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 text-center dark">
+              <a href="#contact">
+                <i class="fa fa-arrow-circle-o-down fa-4x dark" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="slide" data-anchor="weather">
+
+          <div class="row">
+            <div class="col-xs-12 text-center dark">
+              <a href="#skills">
+                <i class="fa fa-arrow-circle-o-up fa-4x dark" aria-hidden="true"></i>
+              </a>
+              <h1>PORTFOLIO</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 text-center">
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <a class="jstooltip" href="http://jwaynedavidson.com/projects/weather/weather.html" target="_blank">
+                    <img class="img-responsive" src="./img/weather-thumbnail.jpg">
+                  </a>
+                </div>
+                <div class="col-md-6 text-left">
+                  <h2>User Geolocated Weather</h2>
+                  <a class="text-link-dark" href="https://github.com/joshuadavidson/weather-project" target="_blank">See the Code Here</a>
+                  <h3>Elements</h3>
+                  <ul>
+                    <li>HTML/CSS with dynamic video background</li>
+                    <li>Javascript API calls from four sources</li>
+                    <li>jQuery transitions</li>
+                  </ul>
+                  <h3>Description</h3>
+                  <p class="text-justify">Displays the user's current weather with a background video or image representing their weather.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 text-center dark">
+              <a href="#contact">
+                <i class="fa fa-arrow-circle-o-down fa-4x dark" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="slide" data-anchor="wikipedia">
+
+          <div class="row">
+            <div class="col-xs-12 text-center dark">
+              <a href="#skills">
+                <i class="fa fa-arrow-circle-o-up fa-4x dark" aria-hidden="true"></i>
+              </a>
+              <h1>PORTFOLIO</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 text-center">
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <a class="jstooltip" href="http://jwaynedavidson.com/projects/wikipedia-viewer/viewer.html" target="_blank">
+                    <img class="img-responsive" src="./img/wikipedia-thumbnail.jpg">
+                  </a>
+                </div>
+                <div class="col-md-6 text-left">
+                  <h2>Wikipedia Search</h2>
+                  <a class="text-link-dark" href="https://github.com/joshuadavidson/wikipedia-viewer-project" target="_blank">See the Code Here</a>
+                  <h3>Elements</h3>
+                  <ul>
+                    <li>Responsive Boostrap HTML/CSS</li>
+                    <li>Use of Wikipedia API</li>
+                    <li>jQuery transitions</li>
+                  </ul>
+                  <h3>Description</h3>
+                  <p class="text-justify">Displays a listing of search results for the entered term including title, wikipedia image, and article text.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 text-center dark">
+              <a href="#contact">
+                <i class="fa fa-arrow-circle-o-down fa-4x dark" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!--Contact-->
+    <section class="section" id="contact-block">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xs-12 text-center light">
+            <a href="#portfolio">
+              <i class="fa fa-arrow-circle-o-up fa-4x" aria-hidden="true"></i>
+            </a>
+            <h1>CONTACT ME</h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+
+            <div class="row panel panel-light panel-default panel-body">
+              <div class="row">
+                <div class="col-xs-8 col-xs-offset-2 text-center">
+                  <p>Whether you’re a fellow coder, a small start-up, or an established business
+                  <br>I would love to hear from you.
+                  <br>Who knows maybe we can create something great together!</p>
+
+
+              <div class="row">
+                <div class="col-sm-4 text-center">
+                  <a class="icon-link-dark" href="https://github.com/joshuadavidson">
+                    <i class="fa fa-github fa-3x" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="col-sm-4 text-center">
+                  <a class="icon-link-dark" href="https://www.linkedin.com/in/jwdavidson">
+                    <i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div class="col-sm-4 text-center">
+                  <a class="icon-link-dark" href="https://www.freecodecamp.com/joshuadavidson">
+                    <i class="fa fa-fire fa-3x" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                  <p>
+                    <i class="fa fa-skype fa-3x" aria-hidden="true"></i>
+                    <br>Skype: joshuadavidson
+                  </p>
+                  <p>
+                    <i class="fa fa-envelope fa-3x" aria-hidden="true"></i>
+                    <br>email: email@jwaynedavidson.com
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+            </div>
           </div>
 
         </div>
       </div>
-    </div>
+
+    </section>
+
   </div>
-  </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.0/vendors/scrolloverflow.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.0/jquery.fullPage.min.js"></script>
+  <script src="./scripts/main.js"></script>
 
 </body>
