@@ -17,9 +17,6 @@ a:hover, a:active {
 
 /* Created classes*/
 
-.circle-img {
-  border-radius: 50%;
-}
 a.icon-link-dark:link, a.icon-link-dark:visited {
   color: black;
   text-decoration: none;
