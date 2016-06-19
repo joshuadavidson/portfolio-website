@@ -85,6 +85,9 @@ a.text-link-dark:hover, a.text-link-dark:active {
 
 /* Modified bootstrap classes */
 
+.slide .row{
+  padding: 0px 15px 0px 15px;
+}
 .img-responsive {
   margin: 0 auto;
 }
