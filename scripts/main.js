@@ -1,7 +1,7 @@
 $(document).ready(function() {
   //enable fullpage.js
   $('#fullpage').fullpage({
-    anchors: ['intro', 'about', 'skills', 'portfolio', 'contact'],
+    anchors: ['intro', 'about', 'skills', 'backend', 'frontend', 'contact'],
     scrollOverflow: true
   });
 });

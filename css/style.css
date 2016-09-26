@@ -1,6 +1,7 @@
 body {
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
+  color: black;
 }
 h1 {
   font-size: 40px;
@@ -45,48 +46,28 @@ a.text-link-dark:hover, a.text-link-dark:active {
 .light {
   color: #fdfaf5;
 }
-
-/* Created ids*/
-
-#intro-block {
+.houston-background {
   background-image: url(https://jwaynedavidson.com/img/houston_backgroundblue.svg);
   background-size: cover;
-  color: #fdfaf5;
 }
-#about-block {
+.white-background {
   background-color: #fdfaf5;
-  color: #fdfaf5;
 }
-#skills-block {
-  background-image: url(https://jwaynedavidson.com/img/houston_backgroundblue.svg);
-  background-size: cover;
-  color: black;
-}
-#portfolio-block {
-  background-color: #fdfaf5;
-  color: black;
-}
-#contact-block {
-  background-image: url(https://jwaynedavidson.com/img/houston_backgroundblue.svg);
-  background-size: cover;
-  color: black;
-}
+
 
 /* modified fullPage.js classes */
 
 .fp-controlArrow.fp-prev {
   border-color: transparent #173e67;
-  transparent transparent;
 }
 .fp-controlArrow.fp-next {
-  border-color: transparent transparent transparent #173e67;
-  ;
+  border-color: transparent #173e67;
 }
 
 /* Modified bootstrap classes */
 
 .slide .row{
-  padding: 0px 15px 0px 15px;
+  padding: 0 15px 0 15px;
 }
 .img-responsive {
   margin: 0 auto;
