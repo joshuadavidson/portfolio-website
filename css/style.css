@@ -64,16 +64,16 @@ a.text-link-dark:hover, a.text-link-dark:active {
   border-color: transparent #173e67;
 }
 [data-anchor="skills"] .fp-controlArrow.fp-prev {
-  border-color: transparent white;
+  border-color: transparent #fdfaf5;
 }
 [data-anchor="skills"] .fp-controlArrow.fp-next {
-  border-color: transparent white;
+  border-color: transparent #fdfaf5;
 }
 
 /* Modified bootstrap classes */
 
 .slide .row{
-  padding: 15px 15px 15px 15px;
+  padding: 15px 20px 15px 20px;
 }
 .img-responsive {
   margin: 0 auto;
