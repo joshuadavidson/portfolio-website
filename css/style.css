@@ -16,6 +16,7 @@ a:hover, a:active {
   color: white;
 }
 
+
 /* Created classes*/
 
 a.icon-link-dark:link, a.icon-link-dark:visited {
@@ -72,11 +73,14 @@ a.text-link-dark:hover, a.text-link-dark:active {
 
 /* Modified bootstrap classes */
 
-.slide .row{
-  padding: 15px 20px 15px 20px;
+.slide {
+  padding: 15px 30px 15px 30px;
 }
 .img-responsive {
   margin: 0 auto;
+}
+.panel {
+  border-radius: 0px;
 }
 .panel-dark {
   background-color: #173e67;
