@@ -5,7 +5,6 @@ $(document).ready(function() {
     scrollOverflow: true,
     fitToSection: false,
     animateAnchor: false,
-    scrollOverflowReset: true,
     bigSectionsDestination: 'top',
   });
 });
