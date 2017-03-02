@@ -22,4 +22,4 @@ deploy:
   acl: public_read
 after_deploy:
   # Invalidate every object in the targeted distribution using cloudfront-invalidate-cli
-  - cf-invalidate $CLOUD_FRONT_ID
+  - cf-invalidate $CLOUD_FRONT_ID /*
