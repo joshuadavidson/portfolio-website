@@ -1,10 +1,10 @@
 language: node_js
 node_js:
   - "iojs"
-  - "6"
 install:
-  # `aws-cloudfront-invalidate` is required for invalidation of CloudFront distributions
-  - npm install aws-cloudfront-invalidate
+  # aws-cloudfront-invalidate is required for invalidation of CloudFront distributions
+  # aws-cloudfront-invalidate requires the use of aws-sdk
+  - npm install aws-sdk aws-cloudfront-invalidate
 script: echo \"No Test Needed\"
 deploy:
   # deploy only on branch master
@@ -16,8 +16,6 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   # Name of the S3 bucket
   bucket: "jwaynedavidson.com"
-  # Prevent Travis from deleting built site so it can be uploaded
-  skip_cleanup: true
   # Path to a directory containing built site
   # local_dir: dist
   # Set the Access Control List Permissions to Public read only
