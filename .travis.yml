@@ -2,10 +2,10 @@ language: node_js
 node_js:
   - "iojs"
 install:
-  # aws-cloudfront-invalidate is required for invalidation of CloudFront distributions
-  # aws-cloudfront-invalidate requires the use of aws-sdk
-  - npm install aws-sdk aws-cloudfront-invalidate
-script: echo \"No Test Needed\"
+  # cloudfront-invalidate-cli is required for invalidation of CloudFront distributions
+  # cloudfront-invalidate-cli requires the use of aws-sdk, ini, and yargs
+  - npm install cloudfront-invalidate-cli aws-sdk ini yargs
+script: echo "No Test Needed"
 deploy:
   # deploy only on branch master
   on:
@@ -21,5 +21,5 @@ deploy:
   # Set the Access Control List Permissions to Public read only
   acl: public_read
 after_deploy:
-  # Invalidate every object in the targeted distribution using aws-cloudfront-invalidate
-  - aws-cloudfront-invalidate E7AGTSWEUF16O
+  # Invalidate every object in the targeted distribution using cloudfront-invalidate-cli
+  - cf-invalidate $CLOUD_FRONT_ID
