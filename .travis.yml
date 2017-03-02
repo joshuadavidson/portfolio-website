@@ -22,4 +22,4 @@ deploy:
   acl: public_read
 after_deploy:
   # Invalidate every object in the targeted distribution using aws-cloudfront-invalidate
-  - aws-cloudfront-invalidate $CLOUD_FRONT_ID
+  - aws-cloudfront-invalidate E7AGTSWEUF16O
