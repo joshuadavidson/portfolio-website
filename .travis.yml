@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - "iojs"
+  - "6"
 install:
   # cloudfront-invalidate-cli is required for invalidation of CloudFront distributions
   # cloudfront-invalidate-cli requires the use of aws-sdk, ini, and yargs
   - npm install cloudfront-invalidate-cli aws-sdk ini yargs
-script: echo "No Test Needed"
+script: npm run build-prod
 deploy:
   # deploy only on branch master
   on:
@@ -15,9 +15,9 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   # Name of the S3 bucket
-  bucket: "jwaynedavidson.com"
+  bucket: $BUCKET_NAME
   # Path to a directory containing built site
-  # local_dir: dist
+  local_dir: dist
   # Set the Access Control List Permissions to Public read only
   acl: public_read
 after_deploy:
