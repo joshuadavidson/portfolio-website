@@ -5,6 +5,7 @@ node_js:
 install:
   # `aws-cloudfront-invalidate` is required for invalidation of CloudFront distributions
   - npm install aws-cloudfront-invalidate
+scripts: echo \"No Test Needed\" && exit 1
 deploy:
   # deploy only on branch master
   on:
