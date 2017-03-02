@@ -5,7 +5,7 @@ install:
   # cloudfront-invalidate-cli is required for invalidation of CloudFront distributions
   # cloudfront-invalidate-cli requires the use of aws-sdk, ini, and yargs
   - npm install cloudfront-invalidate-cli aws-sdk ini yargs
-script: npm run build-prod
+script: echo "No test or build needed"
 deploy:
   # deploy only on branch master
   on:
