@@ -54,9 +54,6 @@ a.text-link-dark:hover, a.text-link-dark:active {
 .white-background {
   background-color: #fdfaf5;
 }
-.fa {
-  line-height: normal !inherit;
-}
 
 
 /* modified fullPage.js classes */
@@ -80,6 +77,9 @@ a.text-link-dark:hover, a.text-link-dark:active {
 
 /* Modified bootstrap classes */
 
+.btn {
+  border-radius: 0 !important;
+}
 .slide {
   padding: 15px 15px 15px 15px;
 }
@@ -87,7 +87,7 @@ a.text-link-dark:hover, a.text-link-dark:active {
   margin: 0 auto;
 }
 .panel {
-  border-radius: 0px;
+  border-radius: 0;
 }
 .panel-dark {
   background-color: #173e67;
