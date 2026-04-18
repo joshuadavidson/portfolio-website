@@ -1,522 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Flip 7 Score Tracker</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RLJWJ7B5D"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-    
-        gtag('config', 'G-1RLJWJ7B5D');
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-        /* Vibrant Flip 7 Theme */
-        :root {
-            --bg-color: #84CBD1; 
-            --card-bg: #FAFAFA;
-            --text-main: #2A1B4E; 
-            --text-muted: #666;
-            --accent-yellow: #FCE354;
-            --accent-purple: #3E2A70;
-            --danger-red: #E54B4B;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Flip 7 Score Tracker</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RLJWJ7B5D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
+    gtag('config', 'G-1RLJWJ7B5D');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    /* Vibrant Flip 7 Theme */
+    :root {
+      --bg-color: #84CBD1;
+      --card-bg: #FAFAFA;
+      --text-main: #2A1B4E;
+      --text-muted: #666;
+      --accent-yellow: #FCE354;
+      --accent-purple: #3E2A70;
+      --danger-red: #E54B4B;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        #app {
-            width: 100%;
-            max-width: 480px;
-            padding: 20px 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        /* Stylized Logo Title */
-        h1 {
-            text-align: center;
-            font-family: "Arial Black", Impact, sans-serif;
-            font-size: 46px;
-            font-style: italic;
-            color: var(--accent-yellow);
-            -webkit-text-stroke: 2px var(--accent-purple);
-            text-shadow: 4px 4px 0 var(--accent-purple), 6px 6px 10px rgba(0,0,0,0.2);
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            transform: rotate(-3deg);
-        }
+    #app {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        /* Forms & Inputs */
-        .add-player-form {
-            background-color: var(--card-bg);
-            padding: 15px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            border: 3px solid var(--accent-purple);
-            box-shadow: 4px 4px 0 rgba(62, 42, 112, 0.2);
-        }
+    /* Stylized Logo Title */
+    h1 {
+      text-align: center;
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 46px;
+      font-style: italic;
+      color: var(--accent-yellow);
+      -webkit-text-stroke: 2px var(--accent-purple);
+      text-shadow: 4px 4px 0 var(--accent-purple), 6px 6px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      transform: rotate(-3deg);
+    }
 
-        .row { display: flex; gap: 10px; align-items: center; }
+    /* Forms & Inputs */
+    .add-player-form {
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 3px solid var(--accent-purple);
+      box-shadow: 4px 4px 0 rgba(62, 42, 112, 0.2);
+    }
 
-        input[type="text"], input[type="number"], select {
-            background-color: #fff;
-            color: var(--text-main);
-            border: 2px solid var(--accent-purple);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 16px;
-            width: 100%;
-            font-weight: bold;
-        }
+    .row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
-        /* Themed Dropdown Arrow */
-        select {
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233E2A70' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            background-size: 20px;
-            padding-right: 30px;
-        }
+    input[type="text"],
+    input[type="number"],
+    select {
+      background-color: #fff;
+      color: var(--text-main);
+      border: 2px solid var(--accent-purple);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100%;
+      font-weight: bold;
+    }
 
-        input:focus, select:focus {
-            outline: 3px solid var(--accent-yellow);
-        }
+    /* Themed Dropdown Arrow */
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233E2A70' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 20px;
+      padding-right: 30px;
+    }
 
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--accent-purple);
-            border: 2px solid var(--accent-purple);
-        }
+    input:focus,
+    select:focus {
+      outline: 3px solid var(--accent-yellow);
+    }
 
-        /* Tabletop-style Buttons */
-        button {
-            background-color: var(--accent-yellow);
-            color: var(--accent-purple);
-            border: 2px solid var(--accent-purple);
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 900;
-            font-size: 16px;
-            cursor: pointer;
-            box-shadow: 3px 3px 0 var(--accent-purple);
-            transition: all 0.1s;
-            text-transform: uppercase;
-        }
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent-purple);
+      border: 2px solid var(--accent-purple);
+    }
 
-        button:active { 
-            transform: translate(3px, 3px); 
-            box-shadow: 0px 0px 0 var(--accent-purple); 
-        }
-        
-        .main-action-btn {
-            font-size: 20px;
-            padding: 15px;
-            width: 100%;
-            background-color: var(--accent-yellow);
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
+    /* Tabletop-style Buttons */
+    button {
+      background-color: var(--accent-yellow);
+      color: var(--accent-purple);
+      border: 2px solid var(--accent-purple);
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 900;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--accent-purple);
+      transition: all 0.1s;
+      text-transform: uppercase;
+    }
 
-        /* Player Card Layout */
-        .player-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 12px 15px;
-            border: 3px solid var(--accent-purple);
-            border-left-width: 12px; 
-            box-shadow: 4px 4px 0 rgba(62, 42, 112, 0.15);
-            margin-bottom: 10px;
-            animation: slideIn 0.2s ease-out;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+    button:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0px 0px 0 var(--accent-purple);
+    }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .main-action-btn {
+      font-size: 20px;
+      padding: 15px;
+      width: 100%;
+      background-color: var(--accent-yellow);
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
 
-        .player-header { display: flex; justify-content: space-between; align-items: center; }
-        .player-name { 
-            font-size: 22px; 
-            font-weight: 900; 
-            -webkit-text-stroke: 1px rgba(0,0,0,0.5);
-            text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
-            letter-spacing: 0.5px;
-        }
-        .settings-btn { 
-            background: none; border: none; box-shadow: none; color: var(--text-muted); 
-            padding: 0; font-size: 20px; width: auto; 
-        }
-        .settings-btn:active { transform: scale(0.9); }
-        
-        .stats-row { display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; color: var(--accent-purple); }
-        .win-badge { background: var(--accent-yellow); padding: 2px 8px; border-radius: 12px; border: 1px solid var(--accent-purple); }
-        
-        .interaction-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
-        .score-display { font-size: 32px; font-weight: 900; width: 65px; color: var(--accent-purple); }
-        .score-input-wrap { flex: 1; }
-        .active-toggle { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: bold; cursor: pointer; color: var(--accent-purple); }
+    /* Player Card Layout */
+    .player-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px 15px;
+      border: 3px solid var(--accent-purple);
+      border-left-width: 12px;
+      box-shadow: 4px 4px 0 rgba(62, 42, 112, 0.15);
+      margin-bottom: 10px;
+      animation: slideIn 0.2s ease-out;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-        .history {
-            padding-top: 8px;
-            border-top: 2px dashed #ddd;
-            font-size: 14px;
-            font-weight: bold;
-            color: var(--accent-purple);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
 
-        .history span { background: #eee; padding: 2px 8px; border-radius: 6px; border: 1px solid #ccc; }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        /* Winner Overlay */
-        #winner-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(132, 203, 209, 0.95);
-            z-index: 1000;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            animation: fadeIn 0.3s;
-        }
+    .player-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .player-name {
+      font-size: 22px;
+      font-weight: 900;
+      -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.5px;
+    }
 
-        #winner-name {
-            font-family: "Arial Black", Impact, sans-serif;
-            font-size: 54px;
-            font-style: italic;
-            font-weight: 900;
-            margin-bottom: 30px;
-            -webkit-text-stroke: 2px var(--accent-purple);
-            text-shadow: 4px 4px 0 var(--accent-purple);
-            transform: rotate(-3deg);
-        }
-    </style>
+    .settings-btn {
+      background: none;
+      border: none;
+      box-shadow: none;
+      color: var(--text-muted);
+      padding: 0;
+      font-size: 20px;
+      width: auto;
+    }
+
+    .settings-btn:active {
+      transform: scale(0.9);
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--accent-purple);
+    }
+
+    .win-badge {
+      background: var(--accent-yellow);
+      padding: 2px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--accent-purple);
+    }
+
+    .interaction-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .score-display {
+      font-size: 32px;
+      font-weight: 900;
+      width: 65px;
+      color: var(--accent-purple);
+    }
+
+    .score-input-wrap {
+      flex: 1;
+    }
+
+    .active-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--accent-purple);
+    }
+
+    .history {
+      padding-top: 8px;
+      border-top: 2px dashed #ddd;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--accent-purple);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .history span {
+      background: #eee;
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    /* Winner Overlay */
+    #winner-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(132, 203, 209, 0.95);
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    #winner-name {
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 54px;
+      font-style: italic;
+      font-weight: 900;
+      margin-bottom: 30px;
+      -webkit-text-stroke: 2px var(--accent-purple);
+      text-shadow: 4px 4px 0 var(--accent-purple);
+      transform: rotate(-3deg);
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="app">
+  <div id="app">
     <h1>FLIP 7</h1>
-    
+
     <div class="add-player-form">
-        <div class="row">
-            <input type="text" id="new-name" placeholder="Enter Player Name..." spellcheck="false" style="flex: 1;">
-            <select id="new-color" title="Pick Player Color" style="flex:1;"></select>
-        </div>
-        <button onclick="addPlayer()">Add Player</button>
+      <div class="row">
+        <input type="text" id="new-name" placeholder="Enter Player Name..." spellcheck="false" style="flex: 1;">
+        <select id="new-color" title="Pick Player Color" style="flex:1;"></select>
+      </div>
+      <button onclick="addPlayer()">Add Player</button>
     </div>
 
     <div id="players-container"></div>
 
-    <button id="finish-round-btn" class="main-action-btn" onclick="playClick(); finishRound()" style="display: none;">Finish Round</button>
+    <button id="finish-round-btn" class="main-action-btn" onclick="playClick(); finishRound()"
+      style="display: none;">Finish Round</button>
 
-    <button onclick="clearAllData()" style="background: none; border: none; box-shadow: none; color: var(--text-muted); font-size: 12px; margin-top: 30px; text-decoration: underline;">Wipe All Players & History</button>
-</div>
+    <button onclick="clearAllData()"
+      style="background: none; border: none; box-shadow: none; color: var(--text-muted); font-size: 12px; margin-top: 30px; text-decoration: underline;">Wipe
+      All Players & History</button>
+  </div>
 
-<div id="winner-overlay">
-    <h2 style="color: var(--accent-purple); font-size: 28px; font-weight: 900; margin-bottom: 10px; text-transform: uppercase;">🏆 Winner 🏆</h2>
+  <div id="winner-overlay">
+    <h2
+      style="color: var(--accent-purple); font-size: 28px; font-weight: 900; margin-bottom: 10px; text-transform: uppercase;">
+      🏆 Winner 🏆</h2>
     <div id="winner-name">Name</div>
     <button onclick="resetScoresOnly()" style="font-size: 20px; padding: 15px 30px;">Start Next Game</button>
-</div>
+  </div>
 
-<script>
+  <script>
     let audioCtx;
     let players = [];
     let gameWon = false;
 
     // --- Themed Color Palette ---
     const FLIP7_COLORS = [
-        { name: 'Teal', hex: '#2AB0B8' },
-        { name: 'Pink', hex: '#F12B7C' },
-        { name: 'Gold', hex: '#AA7B4C' },
-        { name: 'Yellow', hex: '#D4E13F' },
-        { name: 'Red', hex: '#F22C54' },
-        { name: 'Green', hex: '#52A658' },
-        { name: 'Purple', hex: '#A04DA6' },
-        { name: 'Orange', hex: '#F7A368' },
-        { name: 'Lime', hex: '#A4C639' },
-        { name: 'Blue', hex: '#7B8AC6' }
+      { name: 'Teal', hex: '#2AB0B8' },
+      { name: 'Pink', hex: '#F12B7C' },
+      { name: 'Gold', hex: '#AA7B4C' },
+      { name: 'Yellow', hex: '#D4E13F' },
+      { name: 'Red', hex: '#F22C54' },
+      { name: 'Green', hex: '#52A658' },
+      { name: 'Purple', hex: '#A04DA6' },
+      { name: 'Orange', hex: '#F7A368' },
+      { name: 'Lime', hex: '#A4C639' },
+      { name: 'Blue', hex: '#7B8AC6' }
     ];
 
     // Safe Loading
     try {
-        const storedData = localStorage.getItem('flip7_players');
-        if (storedData) {
-            players = JSON.parse(storedData).map(p => ({
-                ...p, 
-                gamesPlayed: p.gamesPlayed || 0,
-                isActive: p.isActive !== false,
-                isEditing: false
-            }));
-        }
+      const storedData = localStorage.getItem('flip7_players');
+      if (storedData) {
+        players = JSON.parse(storedData).map(p => ({
+          ...p,
+          gamesPlayed: p.gamesPlayed || 0,
+          isActive: p.isActive !== false,
+          isEditing: false
+        }));
+      }
     } catch (e) {
-        players = [];
+      players = [];
     }
 
     // Safe Audio Context
     function getAudioContext() {
-        if (!audioCtx) {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (AudioContext) audioCtx = new AudioContext();
-        }
-        if (audioCtx && audioCtx.state === 'suspended') {
-            audioCtx.resume().catch(()=>{});
-        }
-        return audioCtx;
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) audioCtx = new AudioContext();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume().catch(() => { });
+      }
+      return audioCtx;
     }
 
     function playClick() {
-        try {
-            const ctx = getAudioContext();
-            if (!ctx) return;
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(800, ctx.currentTime);
-            gain.gain.setValueAtTime(0.1, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start();
-            osc.stop(ctx.currentTime + 0.1);
-        } catch (e) {}
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, ctx.currentTime);
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.1);
+      } catch (e) { }
     }
 
     function playVictory() {
-        try {
-            const ctx = getAudioContext();
-            if (!ctx) return;
-            const C5=523.25, Ab4=415.30, Bb4=466.16;
-            const melody = [
-                {f:C5, d:0.1}, {f:C5, d:0.1}, {f:C5, d:0.1}, {f:C5, d:0.4},
-                {f:Ab4, d:0.4}, {f:Bb4, d:0.4}, {f:C5, d:0.2}, {f:Bb4, d:0.1}, {f:C5, d:0.8}
-            ];
-            let time = ctx.currentTime;
-            melody.forEach(n => {
-                const osc = ctx.createOscillator();
-                const g = ctx.createGain();
-                osc.type = 'square';
-                osc.frequency.setValueAtTime(n.f, time);
-                g.gain.setValueAtTime(0.1, time);
-                g.gain.linearRampToValueAtTime(0, time + n.d);
-                osc.connect(g);
-                g.connect(ctx.destination);
-                osc.start(time);
-                osc.stop(time + n.d);
-                time += n.d + 0.02;
-            });
-        } catch (e) {}
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const C5 = 523.25, Ab4 = 415.30, Bb4 = 466.16;
+        const melody = [
+          { f: C5, d: 0.1 }, { f: C5, d: 0.1 }, { f: C5, d: 0.1 }, { f: C5, d: 0.4 },
+          { f: Ab4, d: 0.4 }, { f: Bb4, d: 0.4 }, { f: C5, d: 0.2 }, { f: Bb4, d: 0.1 }, { f: C5, d: 0.8 }
+        ];
+        let time = ctx.currentTime;
+        melody.forEach(n => {
+          const osc = ctx.createOscillator();
+          const g = ctx.createGain();
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(n.f, time);
+          g.gain.setValueAtTime(0.1, time);
+          g.gain.linearRampToValueAtTime(0, time + n.d);
+          osc.connect(g);
+          g.connect(ctx.destination);
+          osc.start(time);
+          osc.stop(time + n.d);
+          time += n.d + 0.02;
+        });
+      } catch (e) { }
     }
 
     function save() {
-        try {
-            localStorage.setItem('flip7_players', JSON.stringify(players));
-        } catch (e) {}
+      try {
+        localStorage.setItem('flip7_players', JSON.stringify(players));
+      } catch (e) { }
     }
 
     function populateMainColorOptions() {
-        const mainColorSelect = document.getElementById('new-color');
-        if (!mainColorSelect) return;
-        mainColorSelect.innerHTML = FLIP7_COLORS.map(c => 
-            `<option value="${c.hex}" ${c.name === 'Red' ? 'selected' : ''} style="color:${c.hex}; font-weight:bold;">${c.name}</option>`
-        ).join('');
+      const mainColorSelect = document.getElementById('new-color');
+      if (!mainColorSelect) return;
+      mainColorSelect.innerHTML = FLIP7_COLORS.map(c =>
+        `<option value="${c.hex}" ${c.name === 'Red' ? 'selected' : ''} style="color:${c.hex}; font-weight:bold;">${c.name}</option>`
+      ).join('');
     }
 
     function addPlayer() {
-        playClick();
-        const nameInput = document.getElementById('new-name');
-        const colorInput = document.getElementById('new-color');
-        if (!nameInput || !nameInput.value.trim()) return;
-        
-        players.push({
-            id: Date.now(),
-            name: nameInput.value.trim(),
-            color: colorInput.value, 
-            score: 0, wins: 0, gamesPlayed: 0, history: [], isActive: true, isEditing: false
-        });
-        
-        nameInput.value = '';
-        save(); 
-        render(); 
+      playClick();
+      const nameInput = document.getElementById('new-name');
+      const colorInput = document.getElementById('new-color');
+      if (!nameInput || !nameInput.value.trim()) return;
+
+      players.push({
+        id: Date.now(),
+        name: nameInput.value.trim(),
+        color: colorInput.value,
+        score: 0, wins: 0, gamesPlayed: 0, history: [], isActive: true, isEditing: false
+      });
+
+      nameInput.value = '';
+      save();
+      render();
     }
 
     function toggleActive(id) {
-        const p = players.find(x => x.id === id);
-        if(p) p.isActive = !p.isActive;
-        save();
-        render();
+      const p = players.find(x => x.id === id);
+      if (p) p.isActive = !p.isActive;
+      save();
+      render();
     }
 
     function toggleEdit(id) {
-        playClick();
-        const p = players.find(x => x.id === id);
-        if(p) p.isEditing = !p.isEditing;
-        render();
+      playClick();
+      const p = players.find(x => x.id === id);
+      if (p) p.isEditing = !p.isEditing;
+      render();
     }
 
     function saveEdit(id) {
-        playClick();
-        const p = players.find(x => x.id === id);
-        if(p) {
-            p.name = document.getElementById(`edit-name-${id}`).value || p.name;
-            p.color = document.getElementById(`edit-color-${id}`).value;
-            p.isEditing = false;
-        }
-        save();
-        render();
+      playClick();
+      const p = players.find(x => x.id === id);
+      if (p) {
+        p.name = document.getElementById(`edit-name-${id}`).value || p.name;
+        p.color = document.getElementById(`edit-color-${id}`).value;
+        p.isEditing = false;
+      }
+      save();
+      render();
     }
 
     // --- New Features: Delete and Clear History ---
     function deletePlayer(id) {
-        if(confirm("Are you sure you want to completely delete this player?")) {
-            playClick();
-            players = players.filter(p => p.id !== id);
-            save();
-            render();
-        }
+      if (confirm("Are you sure you want to completely delete this player?")) {
+        playClick();
+        players = players.filter(p => p.id !== id);
+        save();
+        render();
+      }
     }
 
     function clearPlayerHistory(id) {
-        if(confirm("Are you sure you want to clear this player's stats and game history?")) {
-            playClick();
-            const p = players.find(x => x.id === id);
-            if(p) {
-                p.score = 0;
-                p.history = [];
-                p.wins = 0;
-                p.gamesPlayed = 0;
-                p.isEditing = false; // Close the edit menu after clearing
-            }
-            save();
-            render();
+      if (confirm("Are you sure you want to clear this player's stats and game history?")) {
+        playClick();
+        const p = players.find(x => x.id === id);
+        if (p) {
+          p.score = 0;
+          p.history = [];
+          p.wins = 0;
+          p.gamesPlayed = 0;
+          p.isEditing = false; // Close the edit menu after clearing
         }
+        save();
+        render();
+      }
     }
 
     function finishRound() {
-        if (gameWon || players.length === 0) return;
+      if (gameWon || players.length === 0) return;
+
+      players.forEach(p => {
+        if (p.isActive) {
+          const input = document.getElementById(`in-${p.id}`);
+          if (input) {
+            let val = parseInt(input.value);
+            if (isNaN(val)) val = 0;
+            p.score += val;
+            p.history.push(val);
+            input.value = '';
+          }
+        }
+      });
+
+      const highestScore = Math.max(...players.map(p => p.score));
+
+      if (highestScore >= 200) {
+        gameWon = true;
+        let winners = [];
 
         players.forEach(p => {
-            if (p.isActive) {
-                const input = document.getElementById(`in-${p.id}`);
-                if(input) {
-                    let val = parseInt(input.value);
-                    if (isNaN(val)) val = 0; 
-                    p.score += val;
-                    p.history.push(val);
-                    input.value = '';
-                }
-            }
+          if (p.history.length > 0) p.gamesPlayed++;
+          if (p.score === highestScore) {
+            p.wins++;
+            winners.push(p);
+          }
         });
-        
-        const highestScore = Math.max(...players.map(p => p.score));
-        
-        if (highestScore >= 200) {
-            gameWon = true;
-            let winners = [];
 
-            players.forEach(p => {
-                if (p.history.length > 0) p.gamesPlayed++;
-                if (p.score === highestScore) {
-                    p.wins++;
-                    winners.push(p);
-                }
-            });
-            
-            playVictory();
-            
-            try {
-                if (typeof confetti !== 'undefined') {
-                    confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 }, zIndex: 2000 });
-                }
-            } catch(e) {}
-            
-            const overlay = document.getElementById('winner-overlay');
-            const winnerText = document.getElementById('winner-name');
-            if(overlay && winnerText) {
-                winnerText.innerText = winners.map(w => w.name).join(' & ');
-                winnerText.style.color = winners[0].color; 
-                overlay.style.display = 'flex';
-            }
+        playVictory();
+
+        try {
+          if (typeof confetti !== 'undefined') {
+            confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 }, zIndex: 2000 });
+          }
+        } catch (e) { }
+
+        const overlay = document.getElementById('winner-overlay');
+        const winnerText = document.getElementById('winner-name');
+        if (overlay && winnerText) {
+          winnerText.innerText = winners.map(w => w.name).join(' & ');
+          winnerText.style.color = winners[0].color;
+          overlay.style.display = 'flex';
         }
+      }
 
-        save();
-        render();
+      save();
+      render();
     }
 
     function resetScoresOnly() {
-        playClick();
-        players.forEach(p => { 
-            p.score = 0; 
-            p.history = []; 
-            p.isEditing = false;
-        });
-        gameWon = false;
-        const overlay = document.getElementById('winner-overlay');
-        if(overlay) overlay.style.display = 'none';
-        save();
-        render();
+      playClick();
+      players.forEach(p => {
+        p.score = 0;
+        p.history = [];
+        p.isEditing = false;
+      });
+      gameWon = false;
+      const overlay = document.getElementById('winner-overlay');
+      if (overlay) overlay.style.display = 'none';
+      save();
+      render();
     }
 
     function clearAllData() {
-        if(confirm("Are you sure you want to delete all players and stats?")) {
-            players = [];
-            try { localStorage.clear(); } catch(e) {}
-            const overlay = document.getElementById('winner-overlay');
-            if(overlay) overlay.style.display = 'none';
-            render();
-        }
+      if (confirm("Are you sure you want to delete all players and stats?")) {
+        players = [];
+        try { localStorage.clear(); } catch (e) { }
+        const overlay = document.getElementById('winner-overlay');
+        if (overlay) overlay.style.display = 'none';
+        render();
+      }
     }
 
     function render() {
-        const container = document.getElementById('players-container');
-        if (!container) return; 
-        
-        let allCardsHTML = ''; 
+      const container = document.getElementById('players-container');
+      if (!container) return;
 
-        players.forEach(p => {
-            let cardHTML = `<div class="player-card" style="border-left-color:${p.color};">`;
-            const winPct = p.gamesPlayed > 0 ? Math.round((p.wins / p.gamesPlayed) * 100) : 0;
-            
-            if (p.isEditing) {
-                const editColorOptions = FLIP7_COLORS.map(c => 
-                    `<option value="${c.hex}" ${c.hex === p.color ? 'selected' : ''} style="color:${c.hex}; font-weight:bold;">${c.name}</option>`
-                ).join('');
+      let allCardsHTML = '';
 
-                cardHTML += `
+      players.forEach(p => {
+        let cardHTML = `<div class="player-card" style="border-left-color:${p.color};">`;
+        const winPct = p.gamesPlayed > 0 ? Math.round((p.wins / p.gamesPlayed) * 100) : 0;
+
+        if (p.isEditing) {
+          const editColorOptions = FLIP7_COLORS.map(c =>
+            `<option value="${c.hex}" ${c.hex === p.color ? 'selected' : ''} style="color:${c.hex}; font-weight:bold;">${c.name}</option>`
+          ).join('');
+
+          cardHTML += `
                     <div class="row" style="margin-bottom: 5px;">
                         <input type="text" id="edit-name-${p.id}" value="${p.name}" style="flex:1;">
                         <select id="edit-color-${p.id}" style="flex:1;">
@@ -529,12 +615,12 @@
                         <button onclick="deletePlayer(${p.id})" style="flex: 1; background-color: var(--danger-red); color: white; font-size: 13px; padding: 10px 5px;">Delete</button>
                     </div>
                 `;
-            } else {
-                const historyText = p.history.length > 0 
-                    ? p.history.map(h => `<span>${h}</span>`).join('') 
-                    : '<i style="font-weight:normal;color:#999;">No score yet</i>';
+        } else {
+          const historyText = p.history.length > 0
+            ? p.history.map(h => `<span>${h}</span>`).join('')
+            : '<i style="font-weight:normal;color:#999;">No score yet</i>';
 
-                cardHTML += `
+          cardHTML += `
                     <div class="player-header">
                         <span class="player-name" style="color:${p.color}">${p.name}</span>
                         <button class="settings-btn" onclick="toggleEdit(${p.id})">⚙️</button>
@@ -560,26 +646,27 @@
                         ${historyText}
                     </div>
                 `;
-            }
-            cardHTML += `</div>`;
-            allCardsHTML += cardHTML;
-        });
-
-        container.innerHTML = allCardsHTML;
-
-        const finishBtn = document.getElementById('finish-round-btn');
-        if (finishBtn) {
-            if (players.length > 0 && !gameWon && players.some(p => p.isActive)) {
-                finishBtn.style.display = 'block';
-            } else {
-                finishBtn.style.display = 'none';
-            }
         }
+        cardHTML += `</div>`;
+        allCardsHTML += cardHTML;
+      });
+
+      container.innerHTML = allCardsHTML;
+
+      const finishBtn = document.getElementById('finish-round-btn');
+      if (finishBtn) {
+        if (players.length > 0 && !gameWon && players.some(p => p.isActive)) {
+          finishBtn.style.display = 'block';
+        } else {
+          finishBtn.style.display = 'none';
+        }
+      }
     }
 
     // Initialize immediately
     populateMainColorOptions();
     render();
-</script>
+  </script>
 </body>
+
 </html>
